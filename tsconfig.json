@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es2022",
     "module": "node16",
-    "lib": ["ES2022"],
+    "lib": ["ES2022", "DOM"],
     "moduleResolution": "node16",
     "rootDir": ".",
     "outDir": "dist",
@@ -17,7 +17,10 @@
     "noUnusedParameters": false,
     "noImplicitAny": false,
     "noImplicitThis": false,
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "skipLibCheck": true,
+    "strict": true
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": [".yarn", "node_modules", "dist"]
 }

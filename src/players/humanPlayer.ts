@@ -1,11 +1,16 @@
 import { GameHelper } from '../gameHelper.js';
-export class HumanPlayer{
-  getHands = async (numberOfHands: number) => {
-    const hands = [];
+
+export interface PlayerInterface {
+  getHands: (numberOfHands: number) => Promise<string[]>;
+  hands: string[];
+}
+export class HumanPlayer implements PlayerInterface{
+  hands: string[] = [];
+  async getHands(numberOfHands: number){
     for (let index = 0; index < numberOfHands; index++) {
       const hand = await GameHelper.chooseHand(`Choose hand (${index + 1}/${numberOfHands})`)
-      hands.push(hand);
+      this.hands.push(hand);
     }
-    return hands;
+    return this.hands;
   };
 }
