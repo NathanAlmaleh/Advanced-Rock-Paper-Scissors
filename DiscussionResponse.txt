@@ -1,0 +1,19 @@
+Part 1 
+7
+    What are the options to improve the experience of a Human VS Human game play?
+    instead of selecting first of all all the hands for the current round and than checking the winner of the total round.
+    i would check after each selection of the current round who is the winner.
+8
+    a. What is a proper way of dealing with a crash?
+        surrounding the fetch blocks with try and catch, where the catch will log the error, and also return an empty result.
+        i would also use with the function returning a promise a reject response and the function calling those will be surounding by try/catch
+    
+    b. What is a proper way of dealing with a situation where the app was closed in the middle of a game? 
+        I would Use localStorage, sessionStorage, or IndexedDB to check for saved data of the last interaction.
+        So when we trigger the game again it will ask to resume the last game and if so reload all the previus content.
+
+11
+    c.entire game to be played round by round in a CPU player VS CPU player game?
+        since we are using async function to create a random hand for each cpu player and waiting for it to finish for each player using the keyword await.
+        i would try to use Promise.All to create the hands for the cpu so that creating the hands wont wait for one to finish before triggering the other one.
+        and instead running both of them at the same time.
