@@ -1,5 +1,5 @@
 import inquirer from "inquirer";
-import { CpuPlayer } from "./players/cpuPlayer.js";
+import { CpuPlayer, MonkeyPlayer } from "./players/cpuPlayer.js";
 import { HumanPlayer } from "./players/humanPlayer.js";
 
 export class GameHelper {
@@ -62,7 +62,14 @@ static async choosePlayerType(message: string) {
   }
 
   static playerType = (stType:String) =>{
-      return stType === 'Cpu' ? new CpuPlayer() : new HumanPlayer();
+    switch (stType) {
+      case 'Monkey':
+        return new MonkeyPlayer();
+      case 'Cpu':
+        return new CpuPlayer();
+      default:
+        return new HumanPlayer();
+    }
   }
 
   static getValueFromArgs(argName: string) {
