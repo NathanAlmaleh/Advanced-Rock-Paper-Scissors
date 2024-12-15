@@ -4,9 +4,9 @@ export interface PlayerInterface {
   getHands: (numberOfHands: number) => Promise<string[]>;
   hands: string[];
 }
-export class HumanPlayer implements PlayerInterface{
+export class HumanPlayer implements PlayerInterface {
   hands: string[] = [];
-  async getHands(numberOfHands: number){
+  async getHands(numberOfHands: number) {
     for (let index = 0; index < numberOfHands; index++) {
       const hand = await GameHelper.chooseHand(`Choose hand (${index + 1}/${numberOfHands})`)
       this.hands.push(hand);

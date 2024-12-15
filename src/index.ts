@@ -14,7 +14,7 @@ const run = async () => {
   console.log('Thanks for playing! Goodbye.');
 };
 
-const startGame = async (player1Type: string, player2Type: string, numberOfRounds: number, numberOfHands:number) => {
+const startGame = async (player1Type: string, player2Type: string, numberOfRounds: number, numberOfHands: number) => {
   let player1 = GameHelper.playerType(player1Type);
   let player2 = GameHelper.playerType(player2Type);
 

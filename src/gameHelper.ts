@@ -1,16 +1,16 @@
 import inquirer from "inquirer";
 import { CpuPlayer, MonkeyPlayer } from "./players/cpuPlayer.js";
 import { HumanPlayer } from "./players/humanPlayer.js";
-
+import { EHandType, EPlayerType } from "./consts/enumHand.js";
 export class GameHelper {
 
-static async choosePlayerType(message: string) {
+  static async choosePlayerType(message: string) {
     const answer = await inquirer.prompt([
       {
         type: 'list',
         name: 'choice',
         message,
-        choices: ['Human', 'Cpu'],
+        choices: [EPlayerType.HUMAN, EPlayerType.CPU],
       },
     ]);
     return answer.choice;
@@ -18,13 +18,13 @@ static async choosePlayerType(message: string) {
 
   static async chooseHand(message: string) {
     const answer = await inquirer.prompt([
-        {
-          type: 'list',
-          name: 'choice',
-          message,
-          choices: ['Rock', 'Paper', 'Scissors'],
-        },
-      ]);
+      {
+        type: 'list',
+        name: 'choice',
+        message,
+        choices: [EHandType.ROCK, EHandType.PAPER, EHandType.SCISSORS],
+      },
+    ]);
     return answer.choice;
   }
 
@@ -38,9 +38,9 @@ static async choosePlayerType(message: string) {
       if (p1Hand === p2Hand) continue; // It's a tie for this round
 
       if (
-        (p1Hand === 'Rock' && p2Hand === 'Scissors') ||
-        (p1Hand === 'Scissors' && p2Hand === 'Paper') ||
-        (p1Hand === 'Paper' && p2Hand === 'Rock')
+        (p1Hand === EHandType.ROCK && p2Hand === EHandType.SCISSORS) ||
+        (p1Hand === EHandType.SCISSORS && p2Hand === EHandType.PAPER) ||
+        (p1Hand === EHandType.PAPER && p2Hand === EHandType.ROCK)
       ) {
         p1Score++;
       } else {
@@ -51,7 +51,7 @@ static async choosePlayerType(message: string) {
     return { p1Score, p2Score };
   }
 
-  static announceWinner(p1Score: number, p2Score: number):void{
+  static announceWinner(p1Score: number, p2Score: number): void {
     if (p1Score > p2Score) {
       console.log("Player 1 wins the game!");
     } else if (p2Score > p1Score) {
@@ -61,11 +61,11 @@ static async choosePlayerType(message: string) {
     }
   }
 
-  static playerType = (stType:String) =>{
+  static playerType = (stType: String) => {
     switch (stType) {
-      case 'Monkey':
+      case EPlayerType.MONKEY:
         return new MonkeyPlayer();
-      case 'Cpu':
+      case EPlayerType.HUMAN:
         return new CpuPlayer();
       default:
         return new HumanPlayer();
