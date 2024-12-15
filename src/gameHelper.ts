@@ -42,13 +42,13 @@ static async choosePlayerType(message: string) {
         (p1Hand === 'Scissors' && p2Hand === 'Paper') ||
         (p1Hand === 'Paper' && p2Hand === 'Rock')
       ) {
-        p1Score++; // Player 1 wins this round
+        p1Score++;
       } else {
-        p2Score++; // Player 2 wins this round
+        p2Score++;
       }
     }
 
-    return { p1Score, p2Score }; // Return the scores for both players
+    return { p1Score, p2Score };
   }
 
   static announceWinner(p1Score: number, p2Score: number):void{
