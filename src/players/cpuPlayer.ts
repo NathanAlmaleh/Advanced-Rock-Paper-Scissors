@@ -1,5 +1,5 @@
 import { HumanPlayer } from "./humanPlayer.js";
-import { EHandType } from "../consts/enumHand.js";
+import { EHandType } from "../consts/enumType.js";
 
 export class CpuPlayer extends HumanPlayer {
     constructor() {

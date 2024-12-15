@@ -1,7 +1,7 @@
 import inquirer from "inquirer";
 import { CpuPlayer, MonkeyPlayer } from "./players/cpuPlayer.js";
 import { HumanPlayer } from "./players/humanPlayer.js";
-import { EHandType, EPlayerType } from "./consts/enumHand.js";
+import { EHandType, EPlayerType } from "./consts/enumType.js";
 export class GameHelper {
 
   static async choosePlayerType(message: string) {
