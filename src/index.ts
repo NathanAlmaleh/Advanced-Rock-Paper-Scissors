@@ -28,9 +28,8 @@ const startGame = async (player1Type: string, player2Type: string, numberOfRound
     const p2Hands = await player2.getHands(numberOfHands);
 
     const { p1Score, p2Score } = GameHelper.determineRoundWinner(p1Hands, p2Hands);
-
-    p1TotalScore += p1Score;
-    p2TotalScore += p2Score;
+    
+    p1Score > p2Score ? p1TotalScore++ : p2TotalScore++; // increase winner round
 
     console.log(`Round ${index + 1} result:`);
     GameHelper.announceWinner(p1Score, p2Score);

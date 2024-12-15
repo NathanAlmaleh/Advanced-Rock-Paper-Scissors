@@ -7,7 +7,8 @@ export class CpuPlayer extends HumanPlayer {
     }
 
     async getHands(numberOfHands: number): Promise<string[]> {
-
+        this.hands = [] ;
+        
         // monkey player only one random selection use super class for selection other hands
         if (this instanceof MonkeyPlayer) {
             super.getHands(numberOfHands - 1);
