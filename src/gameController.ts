@@ -21,7 +21,11 @@ export class GameController {
 
             const { p1Score, p2Score } = GameHelper.determineRoundWinner(p1Hands, p2Hands);
 
-            p1Score > p2Score ? this.totalScore[0]++ : this.totalScore[1]++;
+            if(p1Score > p2Score ){
+                this.totalScore[0]++
+            }else if(p1Score < p2Score){
+                this.totalScore[1]++;
+            }
 
             console.log(`Round ${index + 1} result:`);
             GameHelper.announceWinner(p1Score, p2Score);

@@ -3,5 +3,5 @@ export enum EHandType {
 }
 
 export enum EPlayerType {
-    MONKEY = 'Monkey', HUMAN = 'Human', CPU = 'Cpu'
+    MONKEY = 'Monkey', HUMAN = 'Human', CPU = 'CPU'
 }

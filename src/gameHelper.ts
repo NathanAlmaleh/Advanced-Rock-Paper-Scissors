@@ -1,6 +1,6 @@
 import inquirer from "inquirer";
 import { CpuPlayer, MonkeyPlayer } from "./players/cpuPlayer.js";
-import { HumanPlayer } from "./players/humanPlayer.js";
+import { HumanPlayer, PlayerInterface } from "./players/humanPlayer.js";
 import { EHandType, EPlayerType } from "./consts/enumType.js";
 export class GameHelper {
 
@@ -29,6 +29,7 @@ export class GameHelper {
   }
 
   static determineRoundWinner(p1Hands: string[], p2Hands: string[]) {
+    console.log('hands',p1Hands, p2Hands);
     let [p1Score, p2Score] = [0, 0];
 
     for (let i = 0; i < p1Hands.length; i++) {
@@ -61,16 +62,19 @@ export class GameHelper {
     }
   }
 
-  static playerType = (stType: String) => {
+  static playerType = (stType: string): PlayerInterface => {
     switch (stType) {
       case EPlayerType.MONKEY:
         return new MonkeyPlayer();
       case EPlayerType.HUMAN:
+        return new HumanPlayer();
+      case EPlayerType.CPU:
         return new CpuPlayer();
       default:
-        return new HumanPlayer();
+        throw new Error(`Unsupported player type: ${stType}`);
     }
-  }
+  };
+  
 
   static getValueFromArgs(argName: string) {
     // Find the argument in process.argv in the format '--key=value'
